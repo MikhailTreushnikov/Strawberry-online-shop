@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: localhost://mariadb:
+    username: root
+    password: root
