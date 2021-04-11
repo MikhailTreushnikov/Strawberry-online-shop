@@ -20,8 +20,7 @@ public class User extends BaseEntity {
         @GeneratedValue(Strategy = GenerationType.IDENTITY)
         private int userId;
     */
-    public User(int id,
-                String firstName,
+    public User(String firstName,
                 String lastName,
                 String email,
                 String phone,
@@ -30,7 +29,6 @@ public class User extends BaseEntity {
                 Address address,
                 HistoryOrder historyOrder,
                 Order order) {
-        super(id);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -44,7 +42,6 @@ public class User extends BaseEntity {
 
     public User() { //пустой конструктор для entity
     }
-
 
     @Column(name = "first_name")
     private String firstName;

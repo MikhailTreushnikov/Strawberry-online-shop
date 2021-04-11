@@ -37,13 +37,4 @@ public class Order extends BaseEntity {
 //    @OneToMany
 //    private List<Product> productList = new ArrayList<>();
 
-
-
-/*
-    hibernate ddl autohibernate.hbm2ddl.auto автоматически проверяет
-    и экспортирует DDL в схему при создании sessionFactory.
-
-    //hibernate update in application property
-
- */
 }

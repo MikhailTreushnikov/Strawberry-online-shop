@@ -1,5 +1,12 @@
 spring:
   datasource:
-    url: localhost://mariadb:
+    url: jdbc:mysql://localhost/
     username: root
     password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    allowPublicKeyRetrieval: true
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    hibernate:
+        ddl-auto: update
