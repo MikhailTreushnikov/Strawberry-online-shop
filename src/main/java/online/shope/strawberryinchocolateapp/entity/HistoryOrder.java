@@ -1,30 +1,35 @@
 package online.shope.strawberryinchocolateapp.entity;
 
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
 @Setter
 @Getter
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "type_of_product")
-public class TypeOfProduct extends BaseEntity {
+@Table(name = "history_order")
+
+public class HistoryOrder extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int typeId;
+    private int historyOrderId;
 
-    @Column(name = "type")
-    private String type;
+//    @Column(name = "product_id")
+//    private Product productId;
 
-    @OneToMany(mappedBy = "type", //mappedBy - указывает на поле type класса Product
+    @Column(name = "total_sum")
+    private BigDecimal totalSum;
+
+    @OneToMany(mappedBy = "historyOrder",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.LAZY)
-    private List<Product> products;
+    private List<User> users;
+
 }

@@ -10,8 +10,12 @@ import javax.persistence.*;
 @Setter
 @Getter
 @EqualsAndHashCode(callSuper = true)
-@Table(name="address")
-public class Address extends BaseEntity{
+@Table(name = "address")
+public class Address extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int addressId;
 
     @Column(name = "street")
     private String street;
@@ -26,6 +30,6 @@ public class Address extends BaseEntity{
     private Boolean intercom;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id") //внешний ключ "user_id"
     private User user;
 }

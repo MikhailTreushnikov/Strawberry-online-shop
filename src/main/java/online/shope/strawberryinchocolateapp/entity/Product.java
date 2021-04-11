@@ -8,16 +8,20 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table
+@Table(name = "product")
 @Getter
 @Setter
 @EqualsAndHashCode(callSuper = true)
-public class Product extends BaseEntity{
+public class Product extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int productId;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name="description")
+    @Column(name = "description")
     private String description;
 
     @Column(name = "price")
@@ -25,20 +29,28 @@ public class Product extends BaseEntity{
 
     @Column(name = "sale_mark")
     private Boolean saleMark;
+//это переписал
+//    @ManyToOne()
+//    @JoinColumn(name = "type_id",
+//            foreignKey = @ForeignKey(name = "id")
+//    )
+//    private TypeOfProduct typeId;
 
-    @ManyToOne()
-    @JoinColumn(name = "type_id",
-            foreignKey = @ForeignKey(name = "id")
-    )
-    private TypeOfProduct typeId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "type_id") //внешний ключ "type_id"
+    private TypeOfProduct type;
 
-    @OneToOne
+//    @OneToOne
+//    @JoinColumn(name = "image_id")
+//    private Image image;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "image_id")
     private Image image;
 
     @PreUpdate
     @PrePersist
-    private void preUpdate(){
+    private void preUpdate() {
 
     }
 }

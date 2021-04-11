@@ -11,24 +11,32 @@ import javax.persistence.*;
 @Getter
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "feedback")
-public class Feedback extends BaseEntity{
+public class Feedback extends BaseEntity {
 
-    @Column(name = "positive_comment")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int feedackId;
+
+    @Column(name = "positive_comment") //отличается от диаграммы
     private String positiveComment;
 
-    @Column(name = "negative_comment")
+    @Column(name = "negative_comment") //отличается от диаграммы
     private String negativeComment;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id") //внешний ключ "user_id"
+    private User user;
 
     @ManyToOne()
     @JoinColumn(name = "product_id",
             foreignKey = @ForeignKey(name = "id")
     )
     private Product product;
-
-    @ManyToOne()
-    @JoinColumn(name = "user_id",
-            foreignKey = @ForeignKey(name = "id")
-    )
-    private User user;
+//это переписал
+//    @ManyToOne()
+//    @JoinColumn(name = "user_id",
+//            foreignKey = @ForeignKey(name = "id")
+//    )
+//    private User user;
 
 }

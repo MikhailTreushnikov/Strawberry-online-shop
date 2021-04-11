@@ -9,6 +9,13 @@ import javax.persistence.Id;
 abstract class BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //см стратегия генерации id
+    protected int id;
+
+    public BaseEntity() {
+    }
+
+    public BaseEntity(int id) {
+        this.id = id;
+    }
 }
